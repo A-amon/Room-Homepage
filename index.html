@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/icons/favicon-32x32.png" type="image/png">
+    <link rel="stylesheet" href="styles/css/index.css">
+    <title>Room Homepage</title>
+</head>
+
+<body>
+    <header>
+        <button class="nav__button" aria-expanded="false">
+            <img class="button__image button__image--show" src="assets/icons/icon-hamburger.svg"
+                alt="Click to display menu">
+            <img class="button__image button__image--hide" src="assets/icons/icon-close.svg" alt="Click to hide menu">
+        </button>
+        <a class="nav__logo" href="#">
+            <img src="assets/images/logo.svg" alt="Room Logo">
+        </a>
+        <nav>
+            <ul class="nav__items">
+                <li class="nav__item">
+                    <a href="#">
+                        home
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="#">
+                        shop
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="#">
+                        about
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="#">
+                        contact
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <section class="carousel__container">
+        <div class="carousel__item" aria-current="true">
+            <div class="carousel__image">
+                <picture>
+                    <source media="(min-width:768px)" srcset="assets/images/desktop/desktop-image-hero-1.jpg">
+                    <img src="assets/images/mobile/mobile-image-hero-1.jpg" alt="">
+                </picture>
+            </div>
+            <div class="carousel__content">
+                <h2 class='carousel__title'>
+                    Discover innovative ways to decorate
+                </h2>
+                <p class='carousel__desc'>
+                    We provide unmatched quality, comfort, and style for property owners across the country.
+                    Our experts combine form and function in bringing your vision to life.
+                    Create a room in your own style with our collection and make your property a reflection of you and
+                    what you love.
+                </p>
+                <a class='carousel__shop' href="#">
+                    Shop now
+                </a>
+            </div>
+        </div>
+        <div class="carousel__item" aria-current="false">
+            <div class="carousel__image">
+                <picture>
+                    <source media="(min-width:768px)" srcset="assets/images/desktop/desktop-image-hero-2.jpg">
+                    <img src="assets/images/mobile/mobile-image-hero-2.jpg" alt="">
+                </picture>
+            </div>
+            <div class="carousel__content">
+                <h2 class='carousel__title'>
+                    We are available all across the globe
+                </h2>
+                <p class='carousel__desc'>
+                    With stores all over the world, it's easy for you to find furniture for your home or place of
+                    business.
+                    Locally, we're in most major cities throughout the country.
+                    Find the branch nearest you using our store locator.
+                    Any questions?
+                    Don't hesitate to contact us today.
+                </p>
+                <a class='carousel__shop' href="#">
+                    Shop now
+                </a>
+            </div>
+        </div>
+        <div class="carousel__item" aria-current="false">
+            <div class="carousel__image">
+                <picture>
+                    <source media="(min-width:768px)" srcset="assets/images/desktop/desktop-image-hero-3.jpg">
+                    <img src="assets/images/mobile/mobile-image-hero-3.jpg" alt="">
+                </picture>
+            </div>
+            <div class="carousel__content">
+                <h2 class='carousel__title'>
+                    Manufactured with the best materials
+                </h2>
+                <p class='carousel__desc'>
+                    Our modern furniture provide a high level of quality.
+                    Our company has invested in advanced technology to ensure that every product is made as perfect and
+                    as consistent as possible.
+                    With three decades of experience in this industry, we understand what customers want for their home
+                    and office.
+                </p>
+                <a class="carousel__shop" href="#">
+                    Shop now
+                </a>
+            </div>
+        </div>
+        <div class="carousel__buttons">
+            <button class="carousel__button carousel__button--prev">
+                <img src="assets/icons/icon-angle-left.svg" alt="Previous slide">
+            </button>
+            <button class="carousel__button carousel__button--next">
+                <img src="assets/icons/icon-angle-right.svg" alt="Next slide">
+            </button>
+        </div>
+    </section>
+    <section class="about">
+        <div class="about__image">
+            <img src="assets/images/image-about-dark.jpg" alt="">
+        </div>
+        <div class="about__content">
+            <h2 class="about__title">
+                About our furniture
+            </h2>
+            <p>
+                Our multifunctional collection blends design and function to suit your individual taste.
+                Make each room unique, or pick a cohesive theme that best express your interests and what inspires you.
+                Find the furniture pieces you need, from traditional to contemporary styles or anything in between.
+                Product specialists are available to help you create your dream space.
+            </p>
+        </div>
+        <div class="about__image">
+            <img src="assets/images/image-about-light.jpg" alt="">
+        </div>
+    </section>
+    <script src='index.js'></script>
+</body>
+
+</html>

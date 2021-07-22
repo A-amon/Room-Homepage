@@ -1,0 +1,560 @@
+@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@500;600;700&display=swap");
+html, body, ul, h2 {
+  padding: 0;
+  margin: 0;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+li {
+  list-style: none;
+}
+
+button {
+  background: none;
+  border: none;
+}
+
+/* font sizes*/
+/* font families*/
+.content, .carousel__content, .about__content {
+  padding: 5rem 1.5rem;
+}
+
+.d-flex, header, header .nav__items, .carousel__shop, .carousel__buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body {
+  font-family: "Spartan", sans-serif;
+}
+
+body h2 {
+  margin-bottom: 1rem;
+}
+
+body img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+body p {
+  line-height: 1.6;
+  color: #a1a1a1;
+  font-size: 0.9rem;
+}
+
+body a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media screen and (min-width: 768px) {
+  body p {
+    font-size: 0.8rem;
+  }
+}
+
+/*-------HEADER-------*/
+header {
+  position: absolute;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  height: 100px;
+  padding: 0 1rem;
+  /* MEDIA QUERY FOR LAPTOP */
+}
+
+header nav {
+  margin-left: auto;
+  display: none;
+}
+
+header .nav {
+  /* Center Room logo horizontally */
+}
+
+header .nav__logo {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+header .nav__button {
+  padding: 1rem;
+}
+
+header .nav__button::after, header .nav__button::before {
+  content: '';
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+}
+
+header .nav__button::after {
+  position: absolute;
+  -webkit-transition: background 0.5s;
+  transition: background 0.5s;
+}
+
+header .nav__button::before {
+  position: fixed;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+header .nav__button .button__image--hide {
+  display: none;
+}
+
+header .nav__button[aria-expanded='true'] {
+  /* Fill header background */
+  /* Switch between hamburger/close icons */
+  /* Hide Room logo */
+  /* Show menu */
+}
+
+header .nav__button[aria-expanded='true']::after {
+  background: white;
+}
+
+header .nav__button[aria-expanded='true']::before {
+  background: black;
+  pointer-events: unset;
+}
+
+header .nav__button[aria-expanded='true'] .button__image--hide {
+  display: block;
+}
+
+header .nav__button[aria-expanded='true'] .button__image--show {
+  display: none;
+}
+
+header .nav__button[aria-expanded='true'] + .nav__logo {
+  display: none;
+}
+
+header .nav__button[aria-expanded='true'] ~ nav {
+  display: block;
+}
+
+header .nav__items {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+header .nav__item {
+  margin: 0 0.5rem;
+}
+
+header .nav__item:hover::after {
+  width: 100%;
+  opacity: 1;
+}
+
+header .nav__item::after {
+  content: '';
+  width: 0;
+  opacity: 0;
+  margin: auto;
+  display: block;
+  border-bottom: 3px solid white;
+  -webkit-transition: width 0.5s, opacity 0.5s;
+  transition: width 0.5s, opacity 0.5s;
+}
+
+@media screen and (min-width: 768px) {
+  header {
+    height: 150px;
+    padding: 0 3rem;
+  }
+  header nav {
+    display: block;
+    margin-left: 3rem;
+    color: white;
+  }
+  header .nav__logo {
+    position: relative;
+    left: 0;
+    -webkit-transform: none;
+            transform: none;
+  }
+  header .nav__button {
+    display: none;
+  }
+}
+
+/*-------CAROUSEL-------*/
+.carousel {
+  /* MEDIA QUERY FOR LAPTOP */
+  /* MEDIA QUERY FOR LAPTOP LARGE */
+}
+
+.carousel__container {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: black;
+}
+
+.carousel__item {
+  min-width: 100%;
+}
+
+.carousel__item[aria-current="false"] {
+  display: none;
+}
+
+.carousel__image {
+  height: 468px;
+  position: relative;
+  /* GRADIENT ON IMAGE*/
+}
+
+.carousel__image::before {
+  content: '';
+  height: 100px;
+  width: 100%;
+  background: -webkit-gradient(linear, left top, left bottom, from(#454545), to(transparent));
+  background: linear-gradient(to bottom, #454545, transparent);
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.carousel__image img {
+  height: 100%;
+}
+
+.carousel__content {
+  background: white;
+  -webkit-animation: expandCarouselMobile 1.5s 1 forwards;
+          animation: expandCarouselMobile 1.5s 1 forwards;
+}
+
+.carousel__content.hide-anim {
+  -webkit-animation: hideContentMobile 0.5s 1;
+          animation: hideContentMobile 0.5s 1;
+}
+
+.carousel__desc {
+  min-height: 200px;
+}
+
+.carousel__shop {
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  -webkit-transition: color 0.5s, letter-spacing 0.5s;
+  transition: color 0.5s, letter-spacing 0.5s;
+}
+
+.carousel__shop:hover {
+  color: #a1a1a1;
+  letter-spacing: 0.5rem;
+}
+
+.carousel__shop:hover::after {
+  -webkit-animation: buttonAnim 1.5s infinite;
+          animation: buttonAnim 1.5s infinite;
+}
+
+.carousel__shop::after {
+  content: '';
+  width: 3rem;
+  height: 1rem;
+  display: inline-block;
+  background: url("../../assets/icons/icon-arrow.svg");
+  background-repeat: no-repeat;
+  margin-left: 1rem;
+}
+
+.carousel__buttons {
+  position: absolute;
+  top: calc(468px - 4rem);
+  right: 0;
+}
+
+.carousel__button {
+  background: black;
+  height: 4rem;
+  width: 4rem;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.carousel__button:hover {
+  background: #454545;
+}
+
+.carousel__button img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+@media screen and (min-width: 768px) {
+  .carousel__container {
+    min-height: 500px;
+    height: 60vh;
+  }
+  .carousel__container::before {
+    display: none;
+  }
+  .carousel__item {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .carousel__image {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    height: 100%;
+  }
+  .carousel__image::before {
+    background: -webkit-gradient(linear, right top, left top, from(#454545), to(transparent));
+    background: linear-gradient(to left, #454545, transparent);
+    height: 100%;
+    width: 100px;
+    left: unset;
+    right: 0;
+  }
+  .carousel__image img {
+    height: 100%;
+  }
+  .carousel__content {
+    width: 30%;
+    padding: 6rem 4rem;
+    -webkit-animation: expandCarousel 1s 1 forwards;
+            animation: expandCarousel 1s 1 forwards;
+  }
+  .carousel__content.hide-anim {
+    -webkit-animation: hideContent 0.5s 1;
+            animation: hideContent 0.5s 1;
+  }
+  .carousel__title {
+    font-size: 2rem;
+  }
+  .carousel__desc {
+    min-height: 150px;
+  }
+  .carousel__shop {
+    font-size: 0.9rem;
+  }
+  .carousel__buttons {
+    top: unset;
+    right: calc(30% + 8rem);
+    bottom: 0;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .carousel__content {
+    padding: 8rem;
+  }
+  .carousel__buttons {
+    top: unset;
+    right: calc(30% + 8rem);
+    bottom: 0;
+  }
+}
+
+/*-------ABOUT-------*/
+.about {
+  height: 40vh;
+  /* MEDIA QUERY FOR LAPTOP */
+}
+
+.about__title {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+}
+
+@media screen and (min-width: 768px) {
+  .about {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    width: 100%;
+  }
+  .about__image {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+  }
+  .about__image img {
+    height: 100%;
+  }
+  .about__content {
+    width: 35%;
+    padding: 4rem;
+    -webkit-animation: expandAbout 1s 1 forwards;
+            animation: expandAbout 1s 1 forwards;
+  }
+}
+
+/*-------ANIMATIONS-------*/
+@-webkit-keyframes buttonAnim {
+  from {
+    -webkit-transform: translateX(-2rem);
+            transform: translateX(-2rem);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes buttonAnim {
+  from {
+    -webkit-transform: translateX(-2rem);
+            transform: translateX(-2rem);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes expandCarouselMobile {
+  from {
+    -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
+    -webkit-filter: brightness(2);
+            filter: brightness(2);
+  }
+  to {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    -webkit-filter: brightness(1);
+            filter: brightness(1);
+  }
+}
+
+@keyframes expandCarouselMobile {
+  from {
+    -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
+    -webkit-filter: brightness(2);
+            filter: brightness(2);
+  }
+  to {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    -webkit-filter: brightness(1);
+            filter: brightness(1);
+  }
+}
+
+@-webkit-keyframes hideContentMobile {
+  to {
+    -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
+    -webkit-filter: brightness(2);
+            filter: brightness(2);
+  }
+}
+
+@keyframes hideContentMobile {
+  to {
+    -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
+    -webkit-filter: brightness(2);
+            filter: brightness(2);
+  }
+}
+
+/* Only >= laptop sizes */
+@-webkit-keyframes expandCarousel {
+  from {
+    width: 100%;
+    -webkit-filter: brightness(2);
+            filter: brightness(2);
+  }
+  to {
+    width: 30%;
+    -webkit-filter: brightness(1);
+            filter: brightness(1);
+  }
+}
+@keyframes expandCarousel {
+  from {
+    width: 100%;
+    -webkit-filter: brightness(2);
+            filter: brightness(2);
+  }
+  to {
+    width: 30%;
+    -webkit-filter: brightness(1);
+            filter: brightness(1);
+  }
+}
+
+@-webkit-keyframes expandAbout {
+  from {
+    width: 100%;
+    -webkit-filter: brightness(2);
+            filter: brightness(2);
+  }
+  to {
+    width: 35%;
+    -webkit-filter: brightness(1);
+            filter: brightness(1);
+  }
+}
+
+@keyframes expandAbout {
+  from {
+    width: 100%;
+    -webkit-filter: brightness(2);
+            filter: brightness(2);
+  }
+  to {
+    width: 35%;
+    -webkit-filter: brightness(1);
+            filter: brightness(1);
+  }
+}
+
+@-webkit-keyframes hideContent {
+  to {
+    width: 100%;
+    -webkit-filter: brightness(2);
+            filter: brightness(2);
+  }
+}
+
+@keyframes hideContent {
+  to {
+    width: 100%;
+    -webkit-filter: brightness(2);
+            filter: brightness(2);
+  }
+}
+/*# sourceMappingURL=index.css.map */

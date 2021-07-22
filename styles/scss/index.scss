@@ -1,0 +1,438 @@
+@import 'breakpoints';
+@import 'reset';
+@import 'color';
+@import 'typography';
+@import 'helper';
+
+body{
+    font-family: $font-spartan;
+    h2{
+        margin-bottom:1rem;
+    }
+    
+    img{
+        width: 100%;
+        object-fit: cover;
+    }
+    
+    p{
+        line-height:1.6;
+        color:$dark-gray;
+        font-size: $fontsize-small;
+    }    
+
+    a{
+        color:inherit;
+        text-decoration: none;
+    }
+
+    @include laptop-query{
+        p{
+            font-size: $fontsize-smaller;
+        }
+    }
+}
+
+/*-------HEADER-------*/
+header{
+    position:absolute;
+    box-sizing: border-box;
+    width: 100%;
+    top:0;
+    left:0;
+    z-index: 1;
+    height: 100px;
+    padding:0 1rem;
+    @extend .d-flex;
+
+    nav{
+        margin-left: auto;
+        display: none;
+    }
+
+    .nav{
+        /* Center Room logo horizontally */
+        &__logo{
+           position: absolute;
+           left:50%;
+           transform:translateX(-50%);
+        }
+
+        &__button{
+            padding:1rem;
+            &::after, &::before{
+                content:'';
+                top:0;
+                left:0;
+                height: 100%;
+                width: 100%;
+                z-index: -1;
+            }
+
+            &::after{
+                position: absolute;
+                transition:background 0.5s;
+            }
+
+            &::before{
+                position:fixed;
+                opacity:0.8;
+                pointer-events: none;
+            }
+    
+            .button__image--hide{
+                display: none;
+            }
+    
+            &[aria-expanded='true'] {
+                /* Fill header background */
+                &::after{
+                    background: $white;
+                }
+
+                &::before{
+                    background: $black;
+                    pointer-events: unset;
+                }
+                
+                /* Switch between hamburger/close icons */
+                .button__image--hide{
+                    display: block;
+                }
+    
+                .button__image--show{
+                    display: none;
+                }
+
+                /* Hide Room logo */
+                & + .nav__logo{
+                    display: none;
+                }
+                
+                /* Show menu */
+                & ~ nav{
+                    display: block;
+                }
+            }
+        }
+
+        &__items{
+            @extend .d-flex;
+            font-weight: $fontweight-medium;
+            font-size: $fontsize-small;
+        }
+
+        &__item{
+            margin:0 0.5rem;
+
+            &:hover::after{
+                width: 100%;
+                opacity:1;
+            }
+
+            &::after{
+                content:'';
+                width: 0;
+                opacity:0;
+                margin:auto;
+                display:block;
+                border-bottom: 3px solid $white;
+                transition:width 0.5s, opacity 0.5s;
+            }
+        }
+    }
+
+    /* MEDIA QUERY FOR LAPTOP */
+    @include laptop-query{
+        height:150px;
+        padding:0 3rem;
+
+        nav{
+            display: block;
+            margin-left:3rem;
+            color:$white;
+        }
+
+        .nav{
+            &__logo{
+                position:relative;
+                left:0;
+                transform:none;
+            }
+
+            &__button{
+                display: none;
+            }
+        }
+    }
+}
+
+/*-------CAROUSEL-------*/
+.carousel {
+    &__container{
+        position: relative;
+        display: flex;
+        color:$black;
+    }
+
+    &__item{
+        min-width: 100%;
+
+        &[aria-current="false"]{
+            display: none;
+        }
+    }
+
+    &__image{
+        height: 468px;
+        position: relative;
+
+        /* GRADIENT ON IMAGE*/
+        &::before{
+            content:'';
+            height:100px;
+            width: 100%;
+            background:linear-gradient(to bottom, $very-dark-gray, transparent);
+            display: block;
+            position: absolute;
+            top:0;
+            left:0;
+        }
+
+        img{
+            height: 100%;
+        }
+    }
+
+    &__content{
+        background:$white;
+        @extend .content;
+        animation:expandCarouselMobile 1.5s 1 forwards;
+
+        &.hide-anim{
+            animation:hideContentMobile 0.5s 1;
+        }
+    }
+
+    &__desc{
+        min-height: 200px;
+    }
+    
+    &__shop{
+        text-transform: uppercase;
+        letter-spacing: 0.2rem;
+        @extend .d-flex;
+        transition:color 0.5s, letter-spacing 0.5s;
+
+        &:hover{
+            color:$dark-gray;
+            letter-spacing: 0.5rem;
+            &::after{
+                animation:buttonAnim 1.5s infinite;
+            }
+        }
+
+        &::after{
+            content:'';
+            width:3rem;
+            height:1rem;
+            display: inline-block;
+            background:url('../../assets/icons/icon-arrow.svg');
+            background-repeat: no-repeat;
+            margin-left:1rem;
+        }
+    }
+
+    &__buttons{
+        position: absolute;
+        top:calc(468px - 4rem);
+        right:0;
+        @extend .d-flex;
+    }
+
+    &__button{
+        background:$black;
+        height:4rem;
+        width: 4rem;
+        padding:1rem;
+        cursor: pointer;
+
+        &:hover{
+            background:$very-dark-gray;
+        }
+
+        img{
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+
+    /* MEDIA QUERY FOR LAPTOP */
+    @include laptop-query{
+        &__container{
+            min-height: 500px;
+            height: 60vh;
+
+            &::before{
+                display: none;
+            }
+        }
+
+        &__item{
+            display: flex;
+        }
+
+        &__image{
+            flex:1;
+            height: 100%;
+
+            &::before{
+                background:linear-gradient(to left, $very-dark-gray, transparent);
+                height:100%;
+                width: 100px;
+                left:unset;
+                right:0;
+            }
+
+            img{
+                height: 100%;
+            }
+        }
+
+        &__content{
+            width: 30%;
+            padding:6rem 4rem;
+            animation:expandCarousel 1s 1 forwards;
+
+            &.hide-anim{
+                animation:hideContent 0.5s 1;
+            }
+        }
+
+        &__title{
+            font-size: $fontsize-large;
+        }
+
+        &__desc{
+            min-height: 150px;
+        }
+
+        &__shop{
+            font-size:$fontsize-small;
+        }
+
+        &__buttons{
+            top:unset;
+            right:calc(30% + 8rem);
+            bottom:0;
+        }
+    }
+
+    /* MEDIA QUERY FOR LAPTOP LARGE */
+    @include laptop-l-query{
+        &__content{
+            padding:8rem;
+        }
+
+        &__buttons{
+            top:unset;
+            right:calc(30% + 8rem);
+            bottom:0;
+        }
+    }
+}
+
+/*-------ABOUT-------*/
+.about{
+    height: 40vh;
+
+    &__content{
+        @extend .content;
+    }
+
+    &__title{
+        font-size: $fontsize-regular;
+        text-transform: uppercase;
+        letter-spacing: 0.2rem;
+    }
+
+    /* MEDIA QUERY FOR LAPTOP */
+    @include laptop-query{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        &__image{
+            flex:1;
+            img {
+                height: 100%;
+            }
+        }
+
+        &__content{
+            width: 35%;
+            padding:4rem;
+            animation:expandAbout 1s 1 forwards;
+        }
+    }
+}
+
+/*-------ANIMATIONS-------*/
+@keyframes buttonAnim{
+    from{
+        transform:translateX(-2rem);
+        opacity:0;
+    }
+    to{
+        transform:translateX(0);
+        opacity:1;
+    }
+}
+
+@keyframes expandCarouselMobile {
+    from{
+        transform:translateY(-100%);
+        filter:brightness(2);
+    }
+    to{
+        transform:translateY(0);
+        filter: brightness(1);
+    }
+}
+
+@keyframes hideContentMobile {
+    to{
+        transform:translateY(-100%);
+        filter:brightness(2);
+    }
+}
+
+/* Only >= laptop sizes */
+@keyframes expandCarousel {
+    from{
+        width:100%;
+        filter:brightness(2);
+    }
+    to{
+        width: 30%;
+        filter:brightness(1);
+    }
+}
+
+@keyframes expandAbout {
+    from{
+        width:100%;
+        filter:brightness(2);
+    }
+    to{
+        width: 35%;
+        filter:brightness(1);
+    }
+}
+
+@keyframes hideContent {
+    to{
+        width: 100%;
+        filter:brightness(2);
+    }
+}
